@@ -87,15 +87,15 @@ p.amount{
   border: 2px groove white;
   border-bottom-left-radius: 4px;
   box-shadow: 3px 3px 1.5px #888888;
-  text-align: center;
+	text-align: center;
 }
 
 #bet > p{
-  font-size: 12px;
-  display: block;
-  position: absolute;
-  top: -10px;
-  left: 10px;
+	font-size: 12px;
+	display: block;
+	position: absolute;
+	top: -10px;
+	left: 10px;
 }
 
 #decrease{
@@ -111,11 +111,11 @@ p.amount{
 }
 
 #decrease > p{
-  font-size: 12px;
-  display: block;
-  position: absolute;
-  top: -10px;
-  left: 10px;
+	font-size: 12px;
+	display: block;
+	position: absolute;
+	top: -10px;
+	left: 10px;
 }
 
 #amount{
@@ -152,11 +152,11 @@ p.amount{
 }
 
 #max_bet > p{
-  font-size: 12px;
-  display: block;
-  position: absolute;
-  top: -10px;
-  left: 25px;
+	font-size: 12px;
+	display: block;
+	position: absolute;
+	top: -10px;
+	left: 25px;
 }
 
 #spin_wheel{

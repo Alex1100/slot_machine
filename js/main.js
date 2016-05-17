@@ -1,9 +1,6 @@
 var pokes = ['poke0', 'poke1', 'poke2', 'poke3',
  'poke4', 'poke5'];
 
- // pokes array is strings that
- // equal classes of images
-
 var reels = [];
 
 var coins = 0;
@@ -16,15 +13,9 @@ var Leafeon = 50;
 var Sevens = 150;
 var betAmount = 0;
 
-
 var $reels = $('.poke');
 
 
-// function spectrum(){
-//   var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
-//   $("#coins").animate("color", "hue", 2000);
-//   spectrum();
-// }
 $(document).ready(function(){
   alert("Welcome to Poke Slots! Enjoy. ++500 Coins++ -Alex1100");
   coins+=500;
@@ -32,7 +23,6 @@ $(document).ready(function(){
 });
 $('#spin_wheel').on('click', function() {
   $(".slot_sounds_a").trigger("play");
-  // $(this).css()
   $(this).css('color', 'gold');
   selectPokemons();
   checkIndex();
@@ -112,7 +102,6 @@ function selectPokemons() {
   });
   console.log(reels);
 }
-  //figure out why reels returns as undefined
 
 
 function checkIndex(){
@@ -188,12 +177,6 @@ function checkIndex(){
 
 // if bet amount is passed 250 returns all horizontals
 // if bet amount >= 400 play diagonals and all horizontals
-
-// var Torchik = 25;
-// var Flareon = 30;
-// var Vaporeon = 40;
-// var Leafeon = 50;
-// var Sevens = 150;
 
 
 

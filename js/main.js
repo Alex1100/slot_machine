@@ -22,16 +22,21 @@ $(document).ready(function(){
   render();
 });
 $('#spin_wheel').on('click', function() {
-  $(".slot_sounds_a").trigger("play");
-  $(this).css('color', 'gold');
-  selectPokemons();
-  checkIndex();
-  render();
-  });
+  if(coins < 0){
+	  alert("Lost All The Coins! Give It Another Shot!");
+	  location.reload();
+  } else {
+	  $(".slot_sounds_a").trigger("play");
+	  $(this).css('color', 'gold');
+	  selectPokemons();
+	  checkIndex();
+	  render();
+  	}
+});
 $("#spin_wheel").hover(function(){
     $(this).css('color', 'red');
   }, function(){
-    $(this).css('color', 'white');
+    $(this).css('color', 'black');
   });
 $("#bet").hover(function(){
   $(this).css('color', 'red');
@@ -74,12 +79,12 @@ $("#max_bet").hover(function(){
 });
 $("#max_bet").on('click', function(){
   $(this).css('color', 'gold');
-  if(betAmount || !betAmount){
     betAmount = 500;
+	coins-= betAmount;
     $(".bet_coins").text(betAmount);
-  }
-  alert("Max Wager Placed!");
-});
+	$("#coins").text(coins);
+	alert("Max Wager Placed!");
+  });
 
 // add casino sound effects when page is loaded
 // make buttons that are gey turn yellowish gold when pressed with button pressing sound effect
@@ -88,6 +93,7 @@ $("#max_bet").on('click', function(){
 // coin return sound for coins if won
 // add lightbulbs next to each row and make them go off whenever that row won to indicate winner
 // when winning turn display lights go off
+// figure out logic to make game stop if coins reach zero
 
 
 function selectPokemons() {

@@ -87,6 +87,15 @@ p.amount{
   border: 2px groove white;
   border-bottom-left-radius: 4px;
   box-shadow: 3px 3px 1.5px #888888;
+	text-align: center;
+}
+
+#bet > p{
+	font-size: 12px;
+	display: block;
+	position: absolute;
+	top: -10px;
+	left: 10px;
 }
 
 #decrease{
@@ -99,6 +108,14 @@ p.amount{
   border: 2px groove white;
   border-bottom-left-radius: 4px;
   box-shadow: 3px 3px 1.5px #888888;
+}
+
+#decrease > p{
+	font-size: 12px;
+	display: block;
+	position: absolute;
+	top: -10px;
+	left: 10px;
 }
 
 #amount{
@@ -134,18 +151,24 @@ p.amount{
   box-shadow: 3px 3px 1.5px #888888;
 }
 
+#max_bet > p{
+	font-size: 12px;
+	display: block;
+	position: absolute;
+	top: -10px;
+	left: 25px;
+}
+
 #spin_wheel{
   display: block;
   position: absolute;
   top: 3px;/* .25em / 4px*/
   right: 10px;/* 1.25em / 20px*/
-  color: white;
   width: 100px;
   height: 20px;
-  background-color: blue;
   border: white groove 2px;/* .125em / 2px*/
   border-bottom-left-radius: 4px;/* .125em / 2px*/
-  box-shadow: 3px 3px 1.5px blue;
+  box-shadow: 3px 3px 1.5px #888888;
 }
 /*Make color of #spin_wheel text turn red when hovering over it
  and make it go gold when you press it*/

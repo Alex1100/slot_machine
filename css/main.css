@@ -87,6 +87,15 @@ p.amount{
   border: 2px groove white;
   border-bottom-left-radius: 4px;
   box-shadow: 3px 3px 1.5px #888888;
+  text-align: center;
+}
+
+#bet > p{
+  font-size: 12px;
+  display: block;
+  position: absolute;
+  top: -10px;
+  left: 10px;
 }
 
 #decrease{
@@ -99,6 +108,14 @@ p.amount{
   border: 2px groove white;
   border-bottom-left-radius: 4px;
   box-shadow: 3px 3px 1.5px #888888;
+}
+
+#decrease > p{
+  font-size: 12px;
+  display: block;
+  position: absolute;
+  top: -10px;
+  left: 10px;
 }
 
 #amount{
@@ -134,18 +151,24 @@ p.amount{
   box-shadow: 3px 3px 1.5px #888888;
 }
 
+#max_bet > p{
+  font-size: 12px;
+  display: block;
+  position: absolute;
+  top: -10px;
+  left: 25px;
+}
+
 #spin_wheel{
   display: block;
   position: absolute;
   top: 3px;/* .25em / 4px*/
   right: 10px;/* 1.25em / 20px*/
-  color: white;
   width: 100px;
   height: 20px;
-  background-color: blue;
   border: white groove 2px;/* .125em / 2px*/
   border-bottom-left-radius: 4px;/* .125em / 2px*/
-  box-shadow: 3px 3px 1.5px blue;
+  box-shadow: 3px 3px 1.5px #888888;
 }
 /*Make color of #spin_wheel text turn red when hovering over it
  and make it go gold when you press it*/
@@ -172,34 +195,31 @@ p.amount{
 }
 
 .poke0 {
-  background: url('http://vignette3.wikia.nocookie.net/poke5forum/images/8/89/Pikachu.jpg/revision/latest?cb=20090630145351&path-prefix=de') no-repeat center center;
+  background: url('../images/pikachu_slot.jpg') no-repeat center center;
   background-size: cover;
 }
 
 .poke1 {
-  background: url('http://vignette1.wikia.nocookie.net/pokeworld/images/1/1f/Torchic_2.png/revision/latest?cb=20120101232321') no-repeat center center;
+  background: url('../images/torchic_slot.png') no-repeat center center;
   background-size: cover;
 }
 
 .poke2 {
-  background: url('http://assets.pokemon.com/assets/cms2/img/pokedex/full/470.png') no-repeat center center;
+  background: url('../images/leafeon_slot.png') no-repeat center center;
   background-size: cover;
 }
 
 .poke3 {
-  background: url(
- 'http://vignette1.wikia.nocookie.net/pokemon/images/f/fd/134Vaporeon.png/revision/latest?cb=20140328210733') no-repeat center center;
+  background: url('../images/vaporeon_slot.png') no-repeat center center;
   background-size: cover;
 }
 
 .poke4 {
-  background: url(
- 'http://img2.wikia.nocookie.net/__cb20140123204633/pokemon/images/f/fe/136Flareon_BW_anime.png') no-repeat center center;
+  background: url('../images/flareon_slot.png') no-repeat center center;
   background-size: cover;
 }
 
 .poke5 {
-  background: url(
- 'https://lh5.ggpht.com/t_fyoBsaf2faYSKkx9zO5OGLXzNMqbSGy7Y_uJBog90ArDmL3Mj6pVSfJhLD4Kk8FH8=w300') no-repeat center center;
+  background: url('../images/seven_slot.png') no-repeat center center;
   background-size: cover;
 }

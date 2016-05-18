@@ -1,52 +1,65 @@
 <!DOCTYPE HTML5>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Slot Machine Game</title>
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Slot Machine Game</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 </head>
 <body>
-<div id="sound_effects">
-<audio class="slot_sounds_a" controls>
-  <source src="http://beerpager.weebly.com/uploads/4/3/9/3/4393220/____________________beerpager-casino-sound.mp3" type="audio/mp3">
-</audio>
-</div>
-
-  <div id="machine">
-    <div id="top_info">
-      <u><h1 id="title">Poke Slots</h1></u>
+  <div id="sound_effects">
+    <audio class="slot_sounds_a" controls>
+      <source src="http://beerpager.weebly.com/uploads/4/3/9/3/4393220/____________________beerpager-casino-sound.mp3" type="audio/mp3">
+    </audio>
+    <audio class="slot_sounds_b" controls>
+      <source = src="sounds/Cash_Register_Cha_Ching_SoundBible.com_184076484.wav" type="audio/wav">
+    </audio>
     </div>
+
+    <div id="machine">
+      <div id="top_info">
+        <u><h1 id="title">Poke Slots</h1></u>
+      </div>
+
+      <div class="lights">
+        <div class="light red off" id="light-0"></div>
+        <div class="light red off" id="light-1"></div>
+        <div class="light red off" id="light-2"></div>
+        <div class="light red off" id="light-3"></div>
+        <div class="light red off" id="light-4"></div>
+        <div class="light red off" id="light-5"></div>
+      </div>
+
       <div id="machine_mid">
         <div id="money">
           <p class="amount"><u>COINS:</u></p>
           <div id="coins"></div>
         </div>
-          <div id="display_body">
-            <div class="poke"></div>
-            <div class="poke"></div>
-            <div class="poke"></div>
-            <div class="poke"></div>
-            <div class="poke"></div>
-            <div class="poke"></div>
-            <div class="poke"></div>
-            <div class="poke"></div>
-            <div class="poke"></div>
-          </div>
+        <div id="display_body">
+          <div class="poke"></div>
+          <div class="poke"></div>
+          <div class="poke"></div>
+          <div class="poke"></div>
+          <div class="poke"></div>
+          <div class="poke"></div>
+          <div class="poke"></div>
+          <div class="poke"></div>
+          <div class="poke"></div>
+        </div>
       </div>
     </div>
     <div id="machine_bottom">
       <button id = "bet"><p>Increase Bet<p></button>
-		<button id= "decrease"><p>Decrease Bet</p></button>
+      <button id= "decrease"><p>Decrease Bet</p></button>
       <div id="amount"><p class="bet_coins"></p></div>
-		<button id="max_bet"><p>Max Bet</p></button>
+      <button id="max_bet"><p>Max Bet</p></button>
       <button id="spin_wheel">Spin</button>
     </div>
-  <script type="text/javascript" src="js/main.js"></script>
-</body>
-</html>
+    <script type="text/javascript" src="js/main.js"></script>
+  </body>
+  </html>
 
 
-<!-- add jiffy to make spin blurry with a jQuery fadein/fadeout function -->
+  <!-- add jiffy to make spin blurry with a jQuery fadein/fadeout function -->
 

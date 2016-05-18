@@ -12,12 +12,16 @@
   text-align: center;
   letter-spacing: 0px; /* 0em / 0px */
   line-height: 20px; /* 1.25em / 20px */
-  width: 800px; /* 50em / 800px */
+  width: 780px; /* 50em / 800px */
   height: 600px; /* 37.5em  / 600px*/
   border-radius: 20px; /* 1.25em / 20px */
 }
 
 audio.slot_sounds_a{
+  visibility: hidden;
+}
+
+audio.slot_sounds_b{
   visibility: hidden;
 }
 
@@ -48,10 +52,10 @@ audio.slot_sounds_a{
   background-color: black;
   width: 600px;/* 37.5em / 600px*/
   height: 30px;/* 1.875em  / 30px*/
-  border: solid white 2px;/* 0.125em / 2px*/
+  border: groove white 6px;/* 0.125em / 2px*/
   border-radius: 2px;/* 0.125em / 2px*/
   left: 290px;/* 18.75em / 300px*/
-  top: 530px;/* 18.75em / 560px*/
+  top: 525px;/* 18.75em / 560px*/
 }
 
 p.coins{
@@ -68,8 +72,8 @@ p.amount{
 #money{
   display: block;
   position: absolute;
-  left: 25px;/* 2.5em / 40px*/
-  top: 440px;/* 5em / 80px*/
+  left: 20px;/* 2.5em / 40px*/
+  top: 560px;/* 5em / 80px*/
   width: 110px;/* 8.125em / 130px*/
   height: 50px;/* 28.125em / 450px*/
   background-color: black;
@@ -124,7 +128,7 @@ p.amount{
   left: 245px;/* 1.25em / 20px*/
   width: 100px;/* 6.25em / 100px*/
   height: 20px;/* .25em / 4px*/
-  top: 3px;/* .4375em / 7px*/
+  top: 2px;/* .4375em / 7px*/
   border: 2px groove white;
   border-bottom-left-radius: 4px;
   box-shadow: 3px 3px 1.5px #888888;
@@ -222,4 +226,59 @@ p.amount{
 .poke5 {
   background: url('../images/seven_slot.png') no-repeat center center;
   background-size: cover;
+}
+
+
+.lights {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.light {
+  position: absolute;
+  width: 80px;
+  height: 65px;
+}
+
+#light-0 {
+  top: 105px;
+  left: 40px;
+  background: url("../images/empty_bulb.png") no-repeat center center;
+  background-size: contain;
+}
+
+#light-1{
+  top: 105px;
+  right: 40px;
+  background: url("../images/empty_bulb.png") no-repeat center center;
+  background-size: contain;
+}
+
+#light-2{
+  top: 230px;
+  left: 40px;
+  background: url("../images/empty_bulb.png") no-repeat center center;
+  background-size: contain;
+}
+
+#light-3{
+  top: 230px;
+  right: 40px;
+  background: url("../images/empty_bulb.png") no-repeat center center;
+  background-size: contain;
+}
+
+#light-4{
+  top: 365px;
+  left: 40px;
+  background: url("../images/empty_bulb.png") no-repeat center center;
+  background-size: contain;
+}
+
+#light-5{
+  top: 365px;
+  right: 40px;
+  background: url("../images/empty_bulb.png") no-repeat center center;
+  background-size: contain;
 }

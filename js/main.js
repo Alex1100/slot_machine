@@ -13,12 +13,22 @@ var Leafeon = 50;
 var Sevens = 150;
 var betAmount = 0;
 
+var bulbs = ['empty_bulb.png', 'lit_bulb_0_a.png', 'lit_bulb_0_b.png',
+             'lit_bulb_1_a.png', 'lit_bulb_1_b.png', 'lit_bulb_2_a.png',
+             'lit_bulb_2_b.png', 'lit_bulb_3_a.png', 'lit_bulb_4_b.png',
+             'lit_bulb_4_a.png', 'lit_bulb_4_b.png', 'lit_bulb_5_a.png',
+             'lit_bulb_5_b.png'
+            ];
+
+
+//randomly select image from array of images
 var $reels = $('.poke');
 
 
 $(document).ready(function(){
   alert("Welcome to Poke Slots! Enjoy. ++500 Coins++ -Alex1100");
   coins+=500;
+  $(".slot_sounds_b").trigger("play");
   render();
 });
 $('#spin_wheel').on('click', function() {
@@ -30,6 +40,7 @@ $('#spin_wheel').on('click', function() {
     $(this).css('color', 'gold');
     selectPokemons();
     checkIndex();
+    // changeImage();
     render();
     }
 });
@@ -48,6 +59,7 @@ $("#bet").on('click', function(){
   if(betAmount < 491){
     betAmount+=10;
     coins-=10;
+    $(".slot_sounds_b").trigger("play");
     $(".bet_amount").text(betAmount);
     $("#coins").text(coins);
   } else{
@@ -65,6 +77,7 @@ $("#decrease").on('click', function(){
   if(betAmount > 9){
     betAmount-=10;
     coins+=10;
+    $(".slot_sounds_b").trigger("play");
     $(".bet_coins").text(betAmount);
     $("#coins").text(coins);
   } else{
@@ -79,21 +92,161 @@ $("#max_bet").hover(function(){
 });
 $("#max_bet").on('click', function(){
   $(this).css('color', 'gold');
-    betAmount = 500;
+  betAmount = 500;
   coins-= betAmount;
-    $(".bet_coins").text(betAmount);
+  $(".slot_sounds_b").trigger("play");
+  $(".bet_coins").text(betAmount);
   $("#coins").text(coins);
   alert("Max Wager Placed!");
   });
 
+
+
+function changeimage(){
+  randInt = Math.random(12)+1;
+  switch(randInt){
+    case 1 :
+      image = "lit_bulb_0_a.png";
+      break;
+    case 2 :
+      image = "lit_bulb_0_b.png";
+      break;
+    case 3 :
+      image = "lit_bulb_1_a.png";
+      break;
+    case 4 :
+      image = "lit_bulb_1_b.png";
+      break;
+    case 5 :
+      image = "lit_bulb_2_a.png";
+      break;
+    case 6 :
+      image = "lit_bulb_2_b.png";
+      break;
+    case 7 :
+      image = "lit_bulb_3_a.png";
+      break;
+    case 8 :
+      image = "lit_bulb_3_b.png";
+      break;
+    case 9 :
+      image = "lit_bulb_4_a.png";
+      break;
+    case 10 :
+      image = "lit_bulb_4_b.png";
+      break;
+    case 11 :
+      image = "lit_bulb_5_a.png";
+      break;
+    case 12 :
+      image = "lit_bulb_5_b.png";
+      break;
+    document.getElementById("light-0").innerHTML =
+    "<img src='" + image + "'/>";
+    document.getElementById("light-1").innerHTML =
+    "<img src='" + image + "'/>";
+    document.getElementById("light-2").innerHTML =
+    "<img src='" + image + "'/>";
+    document.getElementById("light-3").innerHTML =
+    "<img src='" + image + "'/>";
+    document.getElementById("light-4").innerHTML =
+    "<img src='" + image + "'/>";
+    document.getElementById("light-5").innerHTML =
+    "<img src='" + image + "'/>";
+  }
+}
+
+
+// loop through div elements and
+// assign img to each randomly from aray
+// if win is true make all bulbs light up to same random color
+
+// sounds for sevens win jackpot + special animation
+// if sevens win then pause music and start new jackpot music
 // add casino sound effects when page is loaded
-// make buttons that are gey turn yellowish gold when pressed with button pressing sound effect
-// for spin button make it turn green when pressed with button pressing sound effect
-// spinning sound for wheels/ and make jiffy for body_display and setTimeout function for selectPokemons().
-// coin return sound for coins if won
+// make jiffy for body_display and setTimeout function for selectPokemons().
 // add lightbulbs next to each row and make them go off whenever that row won to indicate winner
 // when winning turn display lights go off
-// figure out logic to make game stop if coins reach zero
+
+// 7 tasks left to polish up game
+
+
+
+
+// function rotateImage(){
+//   $('#light0').fadeOut(function(){
+//     $(this).attr('src' bulbs[index]);
+//     $(this).fadein(function(){
+//       if(index == images.length-1){
+//         index = 0;
+//       } else{
+//         index++
+//       }
+//     });
+//   });
+//   $('#light1').fadeOut(function(){
+//     $(this).attr('src' bulbs[index]);
+//     $(this).fadein(function(){
+//       if(index == images.length-1){
+//         index = 0;
+//       } else{
+//         index++
+//       }
+//     });
+//   });
+//   $('#light2').fadeOut(function(){
+//     $(this).attr('src' bulbs[index]);
+//     $(this).fadein(function(){
+//       if(index == images.length-1){
+//         index = 0;
+//       } else{
+//         index++
+//       }
+//     });
+//   });
+//   $('#light3').fadeOut(function(){
+//     $(this).attr('src' bulbs[index]);
+//     $(this).fadein(function(){
+//       if(index == images.length-1){
+//         index = 0;
+//       } else{
+//         index++
+//       }
+//     });
+//   });
+//   $('#light4').fadeOut(function(){
+//     $(this).attr('src' bulbs[index]);
+//     $(this).fadein(function(){
+//       if(index == images.length-1){
+//         index = 0;
+//       } else{
+//         index++
+//       }
+//     });
+//   });
+//   $('#light5').fadeOut(function(){
+//     $(this).attr('src' bulbs[index]);
+//     $(this).fadein(function(){
+//       if(index == images.length-1){
+//         index = 0;
+//       } else{
+//         index++
+//       }
+//     });
+//   });
+// }
+
+
+function getRandomImage(bulbs, path){
+  path = path || 'images/';
+  var num = Math.floor(Math.random() * bulbs.length);
+  var img = bulbs[num];
+  var imgStr = '<img src="' + path + img + '" alt = "">';
+  document.write(imgStr);
+  document.close;
+}
+
+
 
 
 function selectPokemons() {
@@ -111,17 +264,17 @@ function selectPokemons() {
 
 
 function checkIndex(){
-  if((betAmount >= 250) && (reels[0] === reels[1]) && reels[0] === reels[2]){
+  if((betAmount >= 100) && (reels[0] === reels[1]) && reels[0] === reels[2]){
     multiplier = 10;
     countCoins(reels[0]);
     return true;
   }
-  if((reels[3] === reels[4]) && reels[3] === reels[5]){
+  if((betAmount <= 100) && (reels[3] === reels[4]) && reels[3] === reels[5]){
   multiplier = 10;
   countCoins(reels[3]);
   return true;
   }
-  if((betAmount >= 250) && (reels[6] === reels[7]) && reels[6] === reels[8]){
+  if((betAmount >= 100) && (reels[6] === reels[7]) && reels[6] === reels[8]){
     multiplier = 10;
     countCoins(reels[6]);
     return true;
@@ -178,14 +331,6 @@ function checkIndex(){
 };
 
 
-//if bet amount up to 100 only return middle
-// horizontal only in middle
-
-// if bet amount is passed 250 returns all horizontals
-// if bet amount >= 400 play diagonals and all horizontals
-
-
-
 
 function countCoins(pokemon){
   if(pokemon === "poke0"){
@@ -211,7 +356,6 @@ function countCoins(pokemon){
 function render(){
   $("#coins").text(coins);
   $(".bet_coins").text(betAmount);
-
 }
 
 function getRndUpTo(upTo) {

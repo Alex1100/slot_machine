@@ -109,18 +109,6 @@ $("#max_bet").on('click', function(){
 // 5 tasks left to polish up game
 
 
-
-
-function getRandomImage(bulbs, path){
-  path = path || 'images/';
-  var num = Math.floor(Math.random() * bulbs.length);
-  var img = bulbs[num];
-  var imgStr = '<img src="' + path + img + '" alt = "">';
-  document.write(imgStr);
-  document.close;
-}
-
-
 function startFlashing() {
 
   for (var i = 0; i < 6; i++) {
@@ -152,7 +140,10 @@ function getRndLightNum() {
 }
 
 function selectPokemons() {
-  // get three random numbers between 0 and one less than the number of poke images inside of the pokes array
+  // get 9 random numbers between 0 and one less than the number of poke images inside of the pokes array
+  // using getRndUpTo as a callback and passing parameter of pokes array .length
+  // reels[i] content is equal to a random poke class from pokes array
+  // next we remove w/e class previously populating that cell of reels[i] and add new class based on each spin
   for (var i = 0; i < 10; i++) {
     var rndNum = getRndUpTo(pokes.length);
     reels[i] = pokes[rndNum];
@@ -164,6 +155,10 @@ function selectPokemons() {
   console.log(reels);
 }
 
+// Winning Condotionals
+// if betAmount <= 100 only middle horizontal lining up will win
+// if betAmount >= 100 all three rows with horizontal matches will win
+// if betAmount >= 400 all win conditionals apply (horizontals and diagonals)
 
 function checkIndex(){
   if((betAmount >= 100) && (reels[0] === reels[1]) && reels[0] === reels[2]){
@@ -233,6 +228,8 @@ function checkIndex(){
 };
 
 
+// Checks to see if paramater passed is equal to
+// poke class/poke index of poke array **poke[i]**
 
 function countCoins(pokemon){
   if(pokemon === "poke0"){
@@ -255,11 +252,13 @@ function countCoins(pokemon){
   }
 };
 
+// Renders amount of coins and current betAmount
 function render(){
   $("#coins").text(coins);
   $(".bet_coins").text(betAmount);
 }
 
+// gets a random number for selectPokemons() function
 function getRndUpTo(upTo) {
   return Math.floor(Math.random() * upTo);
 };

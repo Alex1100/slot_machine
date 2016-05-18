@@ -20,8 +20,6 @@ var bulbs = ['empty_bulb.png', 'lit_bulb_0_a.png', 'lit_bulb_0_b.png',
              'lit_bulb_5_b.png'
             ];
 
-
-//randomly select image from array of images
 var $reels = $('.poke');
 
 
@@ -30,6 +28,7 @@ $(document).ready(function(){
   coins+=500;
   $(".slot_sounds_b").trigger("play");
   render();
+  startFlashing();
 });
 $('#spin_wheel').on('click', function() {
   if(coins < 0){
@@ -40,9 +39,8 @@ $('#spin_wheel').on('click', function() {
     $(this).css('color', 'gold');
     selectPokemons();
     checkIndex();
-    // changeImage();
     render();
-    }
+  }
 });
 $("#spin_wheel").hover(function(){
     $(this).css('color', 'red');
@@ -100,141 +98,17 @@ $("#max_bet").on('click', function(){
   alert("Max Wager Placed!");
   });
 
+// 1. sounds for sevens win jackpot + special animation
+// 2. if sevens win then pause music and start new jackpot music
+// 3. make divs in each cell, shake them using .shake() for a setinterval time
+//    on a click event of spin button and setTimeout function for selectPokemons().
+// 4. when win condition met have lines and canvas element indicate where win condition is true
+// 5. when winning turn display lights all turn to same color and winning sound effect and pause spin function
+//    and see if there can be a way to increase coin count by each number
+
+// 5 tasks left to polish up game
 
 
-function changeimage(){
-  randInt = Math.random(12)+1;
-  switch(randInt){
-    case 1 :
-      image = "lit_bulb_0_a.png";
-      break;
-    case 2 :
-      image = "lit_bulb_0_b.png";
-      break;
-    case 3 :
-      image = "lit_bulb_1_a.png";
-      break;
-    case 4 :
-      image = "lit_bulb_1_b.png";
-      break;
-    case 5 :
-      image = "lit_bulb_2_a.png";
-      break;
-    case 6 :
-      image = "lit_bulb_2_b.png";
-      break;
-    case 7 :
-      image = "lit_bulb_3_a.png";
-      break;
-    case 8 :
-      image = "lit_bulb_3_b.png";
-      break;
-    case 9 :
-      image = "lit_bulb_4_a.png";
-      break;
-    case 10 :
-      image = "lit_bulb_4_b.png";
-      break;
-    case 11 :
-      image = "lit_bulb_5_a.png";
-      break;
-    case 12 :
-      image = "lit_bulb_5_b.png";
-      break;
-    document.getElementById("light-0").innerHTML =
-    "<img src='" + image + "'/>";
-    document.getElementById("light-1").innerHTML =
-    "<img src='" + image + "'/>";
-    document.getElementById("light-2").innerHTML =
-    "<img src='" + image + "'/>";
-    document.getElementById("light-3").innerHTML =
-    "<img src='" + image + "'/>";
-    document.getElementById("light-4").innerHTML =
-    "<img src='" + image + "'/>";
-    document.getElementById("light-5").innerHTML =
-    "<img src='" + image + "'/>";
-  }
-}
-
-
-// loop through div elements and
-// assign img to each randomly from aray
-// if win is true make all bulbs light up to same random color
-
-// sounds for sevens win jackpot + special animation
-// if sevens win then pause music and start new jackpot music
-// add casino sound effects when page is loaded
-// make jiffy for body_display and setTimeout function for selectPokemons().
-// add lightbulbs next to each row and make them go off whenever that row won to indicate winner
-// when winning turn display lights go off
-
-// 7 tasks left to polish up game
-
-
-
-
-// function rotateImage(){
-//   $('#light0').fadeOut(function(){
-//     $(this).attr('src' bulbs[index]);
-//     $(this).fadein(function(){
-//       if(index == images.length-1){
-//         index = 0;
-//       } else{
-//         index++
-//       }
-//     });
-//   });
-//   $('#light1').fadeOut(function(){
-//     $(this).attr('src' bulbs[index]);
-//     $(this).fadein(function(){
-//       if(index == images.length-1){
-//         index = 0;
-//       } else{
-//         index++
-//       }
-//     });
-//   });
-//   $('#light2').fadeOut(function(){
-//     $(this).attr('src' bulbs[index]);
-//     $(this).fadein(function(){
-//       if(index == images.length-1){
-//         index = 0;
-//       } else{
-//         index++
-//       }
-//     });
-//   });
-//   $('#light3').fadeOut(function(){
-//     $(this).attr('src' bulbs[index]);
-//     $(this).fadein(function(){
-//       if(index == images.length-1){
-//         index = 0;
-//       } else{
-//         index++
-//       }
-//     });
-//   });
-//   $('#light4').fadeOut(function(){
-//     $(this).attr('src' bulbs[index]);
-//     $(this).fadein(function(){
-//       if(index == images.length-1){
-//         index = 0;
-//       } else{
-//         index++
-//       }
-//     });
-//   });
-//   $('#light5').fadeOut(function(){
-//     $(this).attr('src' bulbs[index]);
-//     $(this).fadein(function(){
-//       if(index == images.length-1){
-//         index = 0;
-//       } else{
-//         index++
-//       }
-//     });
-//   });
-// }
 
 
 function getRandomImage(bulbs, path){
@@ -247,7 +121,35 @@ function getRandomImage(bulbs, path){
 }
 
 
+function startFlashing() {
 
+  for (var i = 0; i < 6; i++) {
+    (function(j) {
+      setInterval(function() {
+        changeLight(j);
+      }, 275);
+    })(i);
+  }
+
+
+  // for (var i = 0; i < 6; i++) {
+  //   var $light = $('#light-' + i);
+  //   var rnd = Math.floor(Math.random() * 12) + 1;
+  //   // background: url("../images/empty_bulb.png") no-repeat center center;
+  //   $light.css({'background-image': 'url("images/' + bulbs[rnd] + '")'});
+  // }
+
+  function changeLight(lightNum) {
+    var $light = $('#light-' + lightNum);
+    var rnd = Math.floor(Math.random() * 12) + 1;
+    $light.css({'background-image': 'url("images/' + bulbs[rnd] + '")'});
+  }
+}
+
+
+function getRndLightNum() {
+  return Math.floor(Math.random() * 12) + 1;
+}
 
 function selectPokemons() {
   // get three random numbers between 0 and one less than the number of poke images inside of the pokes array

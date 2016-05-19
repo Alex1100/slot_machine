@@ -29,7 +29,6 @@ $(document).ready(function(){
   $(".slot_sounds_b").trigger("play");
   render();
   startFlashing();
-  // checkBetAndCoins();
   $('#spin_wheel').on('click', function() {
     if(coins < 0){
       coins = 0;
@@ -55,7 +54,6 @@ $(document).ready(function(){
   });
   $("#bet").on('click', function(){
     $(this).css('color', 'gold');
-    // increaseBet();
     if(betAmount < 491){
       betAmount+=10;
       coins-=10;
@@ -74,7 +72,6 @@ $(document).ready(function(){
   });
   $("#decrease").on('click', function(){
     $(this).css('color', 'gold');
-    // decreaseBet();
     if(betAmount > 9){
       betAmount-=10;
       coins+=10;

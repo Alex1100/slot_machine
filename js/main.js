@@ -37,12 +37,12 @@ $(document).ready(function(){
     } else {
       $(".slot_sounds_a").trigger("play");
       $(this).css('color', 'gold');
-      selectPokemons();
-      checkIndex();
-      render();
+      spinWheel();
     }
   });
   $("#spin_wheel").hover(function(){
+    previousBet();
+    render();
       $(this).css('color', 'red');
     }, function(){
       $(this).css('color', 'black');
@@ -54,14 +54,18 @@ $(document).ready(function(){
   });
   $("#bet").on('click', function(){
     $(this).css('color', 'gold');
-    if(betAmount < 491){
-      betAmount+=10;
-      coins-=10;
+    if(betAmount < 491 && coins > 0){
+      increaseBet();
       $(".slot_sounds_b").trigger("play");
-      $(".bet_amount").text(betAmount);
-      $("#coins").text(coins);
-    } else{
+      // $(".bet_amount").text(betAmount);
+      // $("#coins").text(coins);
+    }
+    if(betAmount === 500 && coins > 0) {
       alert("Max bet is 500 coins!");
+    }
+    if(betAmount === 0 && coins <= 0){
+      alert("Insufficient Funds. Minimum bet is 10 coins!");
+      location.reload();
     }
     render();
   });
@@ -73,11 +77,10 @@ $(document).ready(function(){
   $("#decrease").on('click', function(){
     $(this).css('color', 'gold');
     if(betAmount > 9){
-      betAmount-=10;
-      coins+=10;
+      decreaseBet();
       $(".slot_sounds_b").trigger("play");
-      $(".bet_coins").text(betAmount);
-      $("#coins").text(coins);
+      // $(".bet_coins").text(betAmount);
+      // $("#coins").text(coins);
     } else{
       alert("Minimum Bet is 10!");
     }
@@ -90,14 +93,21 @@ $(document).ready(function(){
   });
   $("#max_bet").on('click', function(){
     $(this).css('color', 'gold');
-    betAmount = coins;
-    coins-= betAmount;
+    if(betAmount === 0){
+      betAmount += coins;
+      coins-= betAmount;
+    } else if(betAmount >= 10 && betAmount <=500){
+      betAmount += coins;
+      coins-=coins
+    }
     $(".slot_sounds_b").trigger("play");
     $(".bet_coins").text(betAmount);
     $("#coins").text(coins);
     alert("Max Wager Placed!");
   });
 });
+
+
 
 // 1. sounds for sevens win jackpot + special animation,
 //    or if sevens win then pause music and start new jackpot music
@@ -110,12 +120,54 @@ $(document).ready(function(){
 //    within body_display with a visibility of hidden
 // 6. place $("selector").trigger() within each winning condition as a variable to be implemented for
 //    sevens sound effects and try to include an animation along with it
-// 7. write a function that limits the players coins from reaching a
-//    negative number after spin, alerts("Try Again?") and location.reloads
-// 8. rewrite bet functions to match all edge cases negative coins shouldn't be present
-//    and shouldn't be able to bet past 500
 
-// 7 tasks left to polish up game
+// 6 tasks left to polish up game
+
+
+// increase bet amount as long as coins is true/truthy data type
+function increaseBet(){
+  if(coins){
+    betAmount += 10;
+    coins -= 10;
+    $(".bet_amount").text(betAmount);
+    $("#coins").text(coins);
+  }
+}
+
+
+//decrease bet amount as long as coins is true/truthy data type
+function decreaseBet(){
+  if(coins){
+    betAmount -= 10;
+    coins += 10;
+    $(".bet_amount").text(betAmount);
+    $("#coins").text(coins);
+  }
+}
+
+
+// pretty self explanatory ;)
+function spinWheel(){
+  if(betAmount > 0){
+    betAmount -= betAmount;
+    selectPokemons();
+    checkIndex();
+    render();
+  }
+}
+
+// make a previous bet button that would take in the value from the previous betAmount and render that
+// to the .bet_coins class
+
+/// save value of betAmount into local storage as a variable
+// pass that variable with its value to prevousBet function and assign it to betAmount
+
+
+//betAmount keeps increaseing by multiple of 2
+
+
+
+
 
 
 

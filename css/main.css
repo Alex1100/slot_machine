@@ -81,6 +81,11 @@ p.amount{
   border: groove 10px white;
 }
 
+audio.background_music{
+  visibility: hidden;
+}
+
+
 #bet{
   display: block;
   position: absolute;
@@ -224,6 +229,11 @@ p.amount{
 
 .poke5 {
   background: url('../images/seven_slot.png') no-repeat center center;
+  background-size: cover;
+}
+
+.poke_coin {
+  background: url('../images/poke_coin1.gif') no-repeat center center;
   background-size: cover;
 }
 

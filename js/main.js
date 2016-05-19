@@ -98,15 +98,24 @@ $("#max_bet").on('click', function(){
   alert("Max Wager Placed!");
   });
 
-// 1. sounds for sevens win jackpot + special animation
-// 2. if sevens win then pause music and start new jackpot music
-// 3. make divs in each cell, shake them using .shake() for a setinterval time
+// 1. sounds for sevens win jackpot + special animation,
+//    or if sevens win then pause music and start new jackpot music
+// 2. make divs in each cell, shake them using .shake() for a setinterval time
 //    on a click event of spin button and setTimeout function for selectPokemons().
-// 4. when win condition met have lines and canvas element indicate where win condition is true
-// 5. when winning turn display lights all turn to same color and winning sound effect and pause spin function
+// 3. when win condition met have lines and canvas element indicate where win condition is true
+// 4. when winning turn display lights to same color, winning sound effect and pause spin function
 //    and see if there can be a way to increase coin count by each number
+// 5. 24 different canvas elements that will need to be created and placed
+//    within body_display with a visibility of hidden
 
 // 5 tasks left to polish up game
+
+
+
+// 1. place $("selector").trigger() within each winning condition as a variable to be implemented for
+//    sevens sound effects and try to include an animation along with it
+
+// 2.
 
 
 function startFlashing() {

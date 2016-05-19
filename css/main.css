@@ -85,7 +85,6 @@ audio.background_music{
   visibility: hidden;
 }
 
-
 #bet{
   display: block;
   position: absolute;
@@ -138,6 +137,7 @@ audio.background_music{
   border-bottom-left-radius: 4px;
   box-shadow: 3px 3px 1.5px #888888;
 }
+
 #amount > p{
   text-align: center;
   color: red;
@@ -179,7 +179,6 @@ audio.background_music{
   border-bottom-left-radius: 4px;
   box-shadow: 3px 3px 1.5px #888888;
 }
-
 
 #display_body{
   display: block;
@@ -236,7 +235,6 @@ audio.background_music{
   background: url('../images/poke_coin1.gif') no-repeat center center;
   background-size: cover;
 }
-
 
 .lights {
   width: 100%;

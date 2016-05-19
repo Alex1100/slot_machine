@@ -29,74 +29,78 @@ $(document).ready(function(){
   $(".slot_sounds_b").trigger("play");
   render();
   startFlashing();
-});
-$('#spin_wheel').on('click', function() {
-  if(coins < 0){
-    alert("Lost All The Coins! Give It Another Shot!");
-    location.reload();
-  } else {
-    $(".slot_sounds_a").trigger("play");
-    $(this).css('color', 'gold');
-    selectPokemons();
-    checkIndex();
-    render();
-  }
-});
-$("#spin_wheel").hover(function(){
-    $(this).css('color', 'red');
-  }, function(){
-    $(this).css('color', 'black');
+  // checkBetAndCoins();
+  $('#spin_wheel').on('click', function() {
+    if(coins < 0){
+      coins = 0;
+      alert("Lost All The Coins! Give It Another Shot!");
+      location.reload();
+    } else {
+      $(".slot_sounds_a").trigger("play");
+      $(this).css('color', 'gold');
+      selectPokemons();
+      checkIndex();
+      render();
+    }
   });
-$("#bet").hover(function(){
-  $(this).css('color', 'red');
-  }, function(){
-    $(this).css('color', 'black');
-});
-$("#bet").on('click', function(){
-  $(this).css('color', 'gold');
-  if(betAmount < 491){
-    betAmount+=10;
-    coins-=10;
-    $(".slot_sounds_b").trigger("play");
-    $(".bet_amount").text(betAmount);
-    $("#coins").text(coins);
-  } else{
-    alert("Max bet is 500 coins!");
-  }
-  render();
-});
-$("#decrease").hover(function(){
-  $(this).css('color', 'red');
-  }, function(){
-    $(this).css('color', 'black');
-});
-$("#decrease").on('click', function(){
-  $(this).css('color', 'gold');
-  if(betAmount > 9){
-    betAmount-=10;
-    coins+=10;
+  $("#spin_wheel").hover(function(){
+      $(this).css('color', 'red');
+    }, function(){
+      $(this).css('color', 'black');
+    });
+  $("#bet").hover(function(){
+    $(this).css('color', 'red');
+    }, function(){
+      $(this).css('color', 'black');
+  });
+  $("#bet").on('click', function(){
+    $(this).css('color', 'gold');
+    // increaseBet();
+    if(betAmount < 491){
+      betAmount+=10;
+      coins-=10;
+      $(".slot_sounds_b").trigger("play");
+      $(".bet_amount").text(betAmount);
+      $("#coins").text(coins);
+    } else{
+      alert("Max bet is 500 coins!");
+    }
+    render();
+  });
+  $("#decrease").hover(function(){
+    $(this).css('color', 'red');
+    }, function(){
+      $(this).css('color', 'black');
+  });
+  $("#decrease").on('click', function(){
+    $(this).css('color', 'gold');
+    // decreaseBet();
+    if(betAmount > 9){
+      betAmount-=10;
+      coins+=10;
+      $(".slot_sounds_b").trigger("play");
+      $(".bet_coins").text(betAmount);
+      $("#coins").text(coins);
+    } else{
+      alert("Minimum Bet is 10!");
+    }
+    render();
+  });
+  $("#max_bet").hover(function(){
+    $(this).css('color', 'red');
+    }, function(){
+      $(this).css('color', 'black');
+  });
+  $("#max_bet").on('click', function(){
+    $(this).css('color', 'gold');
+    betAmount = coins;
+    coins-= betAmount;
     $(".slot_sounds_b").trigger("play");
     $(".bet_coins").text(betAmount);
     $("#coins").text(coins);
-  } else{
-    alert("Minimum Bet is 10!");
-  }
-  render();
-});
-$("#max_bet").hover(function(){
-  $(this).css('color', 'red');
-  }, function(){
-    $(this).css('color', 'black');
-});
-$("#max_bet").on('click', function(){
-  $(this).css('color', 'gold');
-  betAmount = 500;
-  coins-= betAmount;
-  $(".slot_sounds_b").trigger("play");
-  $(".bet_coins").text(betAmount);
-  $("#coins").text(coins);
-  alert("Max Wager Placed!");
+    alert("Max Wager Placed!");
   });
+});
 
 // 1. sounds for sevens win jackpot + special animation,
 //    or if sevens win then pause music and start new jackpot music
@@ -107,17 +111,18 @@ $("#max_bet").on('click', function(){
 //    and see if there can be a way to increase coin count by each number
 // 5. 24 different canvas elements that will need to be created and placed
 //    within body_display with a visibility of hidden
-
-// 5 tasks left to polish up game
-
-
-
-// 1. place $("selector").trigger() within each winning condition as a variable to be implemented for
+// 6. place $("selector").trigger() within each winning condition as a variable to be implemented for
 //    sevens sound effects and try to include an animation along with it
+// 7. write a function that limits the players coins from reaching a
+//    negative number after spin, alerts("Try Again?") and location.reloads
+// 8. rewrite bet functions to match all edge cases negative coins shouldn't be present
+//    and shouldn't be able to bet past 500
 
-// 2.
+// 7 tasks left to polish up game
 
 
+
+// Explain the clojure that is occuring here
 function startFlashing() {
 
   for (var i = 0; i < 6; i++) {
@@ -136,6 +141,8 @@ function startFlashing() {
   //   $light.css({'background-image': 'url("images/' + bulbs[rnd] + '")'});
   // }
 
+  // A function within a function that randomly selects div with an id of light0 - light5
+  // and a random image from the bulbs array as bulbs[rnd]
   function changeLight(lightNum) {
     var $light = $('#light-' + lightNum);
     var rnd = Math.floor(Math.random() * 12) + 1;
@@ -144,15 +151,11 @@ function startFlashing() {
 }
 
 
-function getRndLightNum() {
-  return Math.floor(Math.random() * 12) + 1;
-}
-
-function selectPokemons() {
   // get 9 random numbers between 0 and one less than the number of poke images inside of the pokes array
   // using getRndUpTo as a callback and passing parameter of pokes array .length
   // reels[i] content is equal to a random poke class from pokes array
   // next we remove w/e class previously populating that cell of reels[i] and add new class based on each spin
+function selectPokemons() {
   for (var i = 0; i < 10; i++) {
     var rndNum = getRndUpTo(pokes.length);
     reels[i] = pokes[rndNum];
@@ -164,7 +167,7 @@ function selectPokemons() {
   console.log(reels);
 }
 
-// Winning Condotionals
+// Winning Conditionals
 // if betAmount <= 100 only middle horizontal lining up will win
 // if betAmount >= 100 all three rows with horizontal matches will win
 // if betAmount >= 400 all win conditionals apply (horizontals and diagonals)
@@ -239,6 +242,7 @@ function checkIndex(){
 
 // Checks to see if paramater passed is equal to
 // poke class/poke index of poke array **poke[i]**
+// set a time lapse a setTimout to the countCoins function
 
 function countCoins(pokemon){
   if(pokemon === "poke0"){
@@ -258,6 +262,9 @@ function countCoins(pokemon){
   }
   if(pokemon === "poke5"){
     coins+= (Sevens * multiplier);
+  }
+  else{
+    return false;
   }
 };
 

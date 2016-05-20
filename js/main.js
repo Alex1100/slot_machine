@@ -38,16 +38,20 @@ $(document).ready(function(){
     }
   });
   $("#spin_wheel").hover(function(){
+    $(this).css('color', 'red');
+    $(this).css('background-color', 'black');
+    }, function(){
+    $(this).css('color', 'black');
+    $(this).css('background-color', 'lightgrey');
     previousBet();
     render();
-      $(this).css('color', 'red');
-    }, function(){
-      $(this).css('color', 'black');
-    });
+  });
   $("#bet").hover(function(){
     $(this).css('color', 'red');
+    $(this).css('background-color', 'black');
     }, function(){
       $(this).css('color', 'black');
+      $(this).css('background-color', 'lightgrey');
   });
   $("#bet").on('click', function(){
     $(this).css('color', 'gold');
@@ -66,12 +70,14 @@ $(document).ready(function(){
   });
   $("#decrease").hover(function(){
     $(this).css('color', 'red');
+    $(this).css('background-color', 'black');
     }, function(){
       $(this).css('color', 'black');
+      $(this).css('background-color', 'lightgrey');
   });
   $("#decrease").on('click', function(){
     $(this).css('color', 'gold');
-    if(betAmount > 9){
+    if(betAmount > 0){
       decreaseBet();
       $(".slot_sounds_b").trigger("play");
     } else{
@@ -81,12 +87,14 @@ $(document).ready(function(){
   });
   $("#max_bet").hover(function(){
     $(this).css('color', 'red');
+    $(this).css('background-color', 'black');
     }, function(){
       $(this).css('color', 'black');
+      $(this).css('background-color', 'lightgrey');
   });
   $("#max_bet").on('click', function(){
     $(this).css('color', 'gold');
-    if(betAmount === 0){
+    if(betAmount == 0){
       betAmount += coins;
       coins-= betAmount;
     } else if(betAmount >= 10 && betAmount <=500){
@@ -124,7 +132,7 @@ function increaseBet(){
 
 //decrease bet amount as long as coins is true/truthy data type
 function decreaseBet(){
-  if(coins){
+  if(coins || coins !== undefined){
     betAmount -= 10;
     coins += 10;
     $(".bet_amount").text(betAmount);
@@ -143,8 +151,10 @@ function spinWheel(){
 
 // Checks to see if bet event is working and secures previous betAmount stored into .bet_amount element
 // and coins won't reach negative number
+
+// fix logic to account for coins being greater than 500
 function checkBetAmount(){
-  if((betAmount > coins && coins < 501) && betAmount < 501){
+  if((betAmount > coins && coins < Infinity) && betAmount < Infinity){
     if (coins < 0) {
       coins = 0;
     }

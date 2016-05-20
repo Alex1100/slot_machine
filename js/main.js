@@ -38,11 +38,11 @@ $(document).ready(function(){
     }
   });
   $("#spin_wheel").hover(function(){
-    previousBet();
-    render();
-      $(this).css('color', 'red');
+    $(this).css('color', 'red');
     }, function(){
       $(this).css('color', 'black');
+    previousBet();
+    render();
     });
   $("#bet").hover(function(){
     $(this).css('color', 'red');

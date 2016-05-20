@@ -39,15 +39,19 @@ $(document).ready(function(){
   });
   $("#spin_wheel").hover(function(){
     $(this).css('color', 'red');
+    $(this).css('background-color', 'black');
     }, function(){
-      $(this).css('color', 'black');
+    $(this).css('color', 'black');
+    $(this).css('background-color', 'lightgrey');
     previousBet();
     render();
-    });
+  });
   $("#bet").hover(function(){
     $(this).css('color', 'red');
+    $(this).css('background-color', 'black');
     }, function(){
       $(this).css('color', 'black');
+      $(this).css('background-color', 'lightgrey');
   });
   $("#bet").on('click', function(){
     $(this).css('color', 'gold');
@@ -66,8 +70,10 @@ $(document).ready(function(){
   });
   $("#decrease").hover(function(){
     $(this).css('color', 'red');
+    $(this).css('background-color', 'black');
     }, function(){
       $(this).css('color', 'black');
+      $(this).css('background-color', 'lightgrey');
   });
   $("#decrease").on('click', function(){
     $(this).css('color', 'gold');
@@ -81,8 +87,10 @@ $(document).ready(function(){
   });
   $("#max_bet").hover(function(){
     $(this).css('color', 'red');
+    $(this).css('background-color', 'black');
     }, function(){
       $(this).css('color', 'black');
+      $(this).css('background-color', 'lightgrey');
   });
   $("#max_bet").on('click', function(){
     $(this).css('color', 'gold');

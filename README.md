@@ -20,4 +20,4 @@ Please email for feature requests or if there are any bugs
 
 Github-Pages: http://Alex1100.github.io/slot_machine
 
-![screenshot](public/Poke_Slots.png)
+![screenshot](public/Poké_Slots.png)

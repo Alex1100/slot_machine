@@ -138,8 +138,8 @@ function spinWheel(){
   }
 }
 
-// Checks to see if bet event is working and secures previous betAmount stored into .bet_amount element
-// and coins won't reach negative number
+// Checks to see if bet event is working and secures previous betAmount
+// stored into .bet_amount element and coins won't reach negative number
 
 function checkBetAmount(){
   if((betAmount > coins && coins < Infinity) && betAmount < Infinity){

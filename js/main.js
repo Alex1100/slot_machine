@@ -108,17 +108,6 @@ $(document).ready(function(){
   });
 });
 
-// 1. sounds for sevens win jackpot + special animation,
-//    or if sevens win then pause music and start new jackpot music
-// 2. make divs in each cell, shake them using .shake() for a setinterval time
-//    on a click event of spin button and setTimeout function for selectPokemons().
-// 3. when win condition met have lines show and then shortly after remove class
-// 4. when winning turn display lights to same color, winning sound effect and pause spin function
-//    and see if there can be a way to increase coin count by each number
-// 5. 24 different hr elements that will need to be created and placed
-//    within body_display with a display of none initially
-// 6. place $("selector").trigger() within each winning condition as a variable to be implemented for
-//    sevens sound effects and try to include an animation along with it
 
 // increase bet amount as long as coins is true/truthy data type
 function increaseBet(){
@@ -149,10 +138,9 @@ function spinWheel(){
   }
 }
 
-// Checks to see if bet event is working and secures previous betAmount stored into .bet_amount element
-// and coins won't reach negative number
+// Checks to see if bet event is working and secures previous betAmount
+// stored into .bet_amount element and coins won't reach negative number
 
-// fix logic to account for coins being greater than 500
 function checkBetAmount(){
   if((betAmount > coins && coins < Infinity) && betAmount < Infinity){
     if (coins < 0) {
@@ -164,13 +152,14 @@ function checkBetAmount(){
   }
 }
 
-// Example of Clojure
-// Executes the chngeLight function 6 times with each iteration
+// Example of Closure
+// Executes the changeLight function 6 times with each iteration
 // grabbing a random image from the bulbs array and altering it's
 // css url property, which changes images every ~quarter second
 // in an order of creation of each div
-// so the first div (light-0) will be iterated through more frequently than the last (light-5)
-// a subtle difference in amount of photoswapping but not really noticeable
+// so the first div (light-0) will be iterated through more frequently
+// than the last (light-5) a subtle difference in amount of
+// photoswapping but still alright
 function startFlashing() {
   for (var i = 0; i < 6; i++) {
     (function(j) {
@@ -180,8 +169,9 @@ function startFlashing() {
     })(i);
   }
 
-  // A function within a function that randomly selects div with an id of light0 - light5
-  // and a random image from the bulbs array as bulbs[rnd]
+  // A function within a function that randomly selects div with an id
+  // of light0 - light5 and a random image from the bulbs array as
+  // bulbs[rnd]
   function changeLight(lightNum) {
     var $light = $('#light-' + lightNum);
     var rnd = Math.floor(Math.random() * 12) + 1;
@@ -189,10 +179,12 @@ function startFlashing() {
   }
 }
 
-  // get 9 random numbers between 0 and one less than the number of poke images inside of the pokes array
-  // using getRndUpTo as a callback and passing parameter of pokes array .length
-  // reels[i] content is equal to a random poke class from pokes array
-  // next we remove w/e class previously populating that cell of reels[i] and add new class based on each spin
+  // get 9 random numbers between 0 and one less than the number of poke
+  // images inside of the pokes array using getRndUpTo as a callback and
+  // passing parameter of pokes array .lengthreels[i] content is equal
+  // to a random poke class from pokes array next we remove w/e class
+  // previously populating that cell of reels[i] and add new class based
+  // on each spin
 function selectPokemons() {
   for (var i = 0; i < 10; i++) {
     var rndNum = getRndUpTo(pokes.length);
@@ -207,7 +199,8 @@ function selectPokemons() {
 // Winning Conditionals
 // if betAmount <= 100 only middle horizontal lining up will win
 // if betAmount >= 100 all three rows with horizontal matches will win
-// if betAmount >= 400 all win conditionals apply (horizontals and diagonals)
+// if betAmount >= 400 all win conditionals apply
+// then (horizontals and diagonals)
 function checkIndex(){
   if((betAmount >= 100) && (reels[0] === reels[1]) && reels[0] === reels[2]){
     multiplier = 10;

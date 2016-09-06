@@ -17,3 +17,7 @@ Authors
 Alex Aleksanyan email: alex1100.software@gmail.com || aleksanyanalek@gmail.com
 
 Please email for feature requests or if there are any bugs
+
+Github-Pages: http://Alex1100.github.io/slot_machine
+
+![screenshot](public/Poké_Slots.png)

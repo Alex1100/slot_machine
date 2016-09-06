@@ -14,6 +14,6 @@ Download and structure documents within the same folder
 
 Authors
 
-Alex Aleksanyan email: aleksanyanalek@gmail.com
+Alex Aleksanyan email: alex1100.software@gmail.com || aleksanyanalek@gmail.com
 
 Please email for feature requests or if there are any bugs

@@ -1,4 +1,4 @@
-# Poke Slots
+# Poké Slots
 
 Test your luck with a game of slots. Can you catch all the Pokemon?
 

